@@ -177,7 +177,7 @@ typedef enum {
     BLURAY_AUDIO_FORMAT_MONO              = 1,
     BLURAY_AUDIO_FORMAT_STEREO            = 3,
     BLURAY_AUDIO_FORMAT_MULTI_CHAN        = 6,
-    BLURAY_AUDIO_FORMAT_COMBO             = 12  // Stereo ac3/dts, 
+    BLURAY_AUDIO_FORMAT_COMBO             = 12  // Stereo ac3/dts,
 } bd_audio_format_e;
                                                 // multi mlp/dts-hd
 
@@ -1129,6 +1129,18 @@ int bd_read_file(BLURAY *, const char *path, void **data, int64_t *size);
 struct bd_dir_s *bd_open_dir(BLURAY *, const char *dir);
 struct bd_file_s *bd_open_file_dec(BLURAY *, const char *path);
 
+/**
+ *
+ * Get information about the clip
+ *
+ * @param bd  BLURAY object
+ * @param clip clip index
+ * @param clip_start_time start of the clip (in the total title) (in 90khz)
+ * @param stream_start_time first pts in the clip (in 90khz)
+ * @param byte position of the clip (absolute)
+ * @param duration duration of the clip (in 90khz)
+ */
+int bd_get_clip_infos(BLURAY *bd, unsigned clip, uint64_t *clip_start_time, uint64_t *stream_start_time, uint64_t *pos, uint64_t *duration);
 
 #ifdef __cplusplus
 }
