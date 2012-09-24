@@ -32,6 +32,7 @@ extern "C" {
 #endif
 
 #include <stdint.h>
+#include "bdnav/clpi_data.h"
 
 #ifdef BLURAY_API_EXPORT
 #include "util/attributes.h"
@@ -1204,7 +1205,6 @@ BD_PUBLIC int bd_mouse_select(BLURAY *bd, int64_t pts, uint16_t x, uint16_t y);
 
 /* access to internal information */
 
-struct clpi_cl;
 struct mpls_pl;
 struct bdjo_data;
 struct mobj_objects;
