@@ -262,6 +262,7 @@ typedef struct bd_stream_info {
 
 /** Clip information */
 typedef struct bd_clip {
+    uint32_t           idx;                     /**< Clip Index */
     uint32_t           pkt_count;               /**< Number of mpeg-ts packets */
     uint8_t            still_mode;              /**< Clip still mode (\ref bd_still_mode_e) */
     uint16_t           still_time;              /**< Still time (seconds) if still_mode == BD_STILL_TIME */
