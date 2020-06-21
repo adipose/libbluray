@@ -789,6 +789,8 @@ static int _bdj_init(JNIEnv *env, struct bluray *bd, const char *disc_root, cons
 
 int bdj_jvm_available(BDJ_CONFIG *storage)
 {
+    return BDJ_CHECK_NO_JVM;
+#if 0
     const char *java_home = NULL;
     void* jvm_lib = _load_jvm(&java_home, storage->java_home);
     if (!jvm_lib) {
@@ -805,6 +807,7 @@ int bdj_jvm_available(BDJ_CONFIG *storage)
     BD_DEBUG(DBG_BDJ, "BD-J check: OK\n");
 
     return BDJ_CHECK_OK;
+#endif
 }
 
 static int _find_jvm(void *jvm_lib, JNIEnv **env, JavaVM **jvm)
@@ -1023,6 +1026,8 @@ static int _create_jvm(void *jvm_lib, const char *java_home, BDJ_CONFIG *cfg,
 BDJAVA* bdj_open(const char *path, struct bluray *bd,
                  const char *bdj_disc_id, BDJ_CONFIG *cfg)
 {
+    return NULL;
+#if 0
     BD_DEBUG(DBG_BDJ, "bdj_open()\n");
 
     if (!_find_libbluray_jar(cfg)) {
@@ -1085,10 +1090,13 @@ BDJAVA* bdj_open(const char *path, struct bluray *bd,
     (*bdjava->jvm)->DetachCurrentThread(bdjava->jvm);
 
     return bdjava;
+#endif
 }
 
 void bdj_close(BDJAVA *bdjava)
 {
+    return;
+#if 0
     JNIEnv *env;
     int attach = 0;
     jclass shutdown_class;
@@ -1137,6 +1145,7 @@ void bdj_close(BDJAVA *bdjava)
 #endif
 
     X_FREE(bdjava);
+#endif
 }
 
 int bdj_process_event(BDJAVA *bdjava, unsigned ev, unsigned param)
